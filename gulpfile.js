@@ -26,7 +26,7 @@ gulp.task('stylus', () => {
 });
 
 gulp.task('pug', () => {
-    gulp.src('./src/pug/*.pug')
+    gulp.src('./src/pug/**/*.pug')
         .pipe(plumber())
         .pipe(pug())
         .pipe(gulp.dest('./docs'));

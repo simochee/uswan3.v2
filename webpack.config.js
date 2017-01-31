@@ -5,7 +5,8 @@ const webpack = require('webpack');
 module.exports = {
 	watch: true,
 	entry: {
-		bundle: './src/scripts/entry.js'
+		public: './src/scripts/public.js',
+		private: './src/scripts/private.js'
 	},
 	output: {
 		path: __dirname + '../docs/assets',
@@ -39,7 +40,7 @@ module.exports = {
 		extensions: ['', '.js', '.tag']
 	},
 	plugins: [
-		new webpack.optimize.UglifyJsPlugin(),
+		// new webpack.optimize.UglifyJsPlugin(),
 		new webpack.ProvidePlugin({
 			riot: 'riot'
 		})
