@@ -7,7 +7,7 @@ navbar
                     .icon.ion-android-search
                     .label 検索
             li.nav-item
-                a.nav-anchor(href="#/schedule")
+                a.nav-anchor(href="#/timetable")
                     .icon.ion-ios-calendar-outline
                     .label 時間割
             li.nav-item

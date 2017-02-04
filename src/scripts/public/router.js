@@ -16,6 +16,16 @@ route('/search', () => {
     riot.mount('router', 'search');
 });
 
+route('/timetable', () => {
+    require('../tags/public/timetable');
+    riot.mount('router', 'timetable');
+});
+
+route('/info', () => {
+    require('../tags/public/info');
+    riot.mount('router', 'info');
+});
+
 module.exports = {
     start: () => {
         route.start(true);

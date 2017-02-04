@@ -5,7 +5,9 @@ search
             form.input-area(onsubmit="return false")
                 input.input(type="text" placeholder="検索ワード")
                 button.submit(type="submit") 検索
-            p.help-block 直近１ヶ月の献立から検索します。過去を対象とした検索は未実装
+            p.help-block 直近１ヶ月の献立から検索します
+    
+    .result-no-keyword 検索ワードを指定してください
     
     style(type="stylus").
         .search-box
@@ -28,6 +30,7 @@ search
                         flex 1
                         padding 0 12px
                         border 1px solid rgba(#ccc, .5)
+                        background rgba(#fff, .3)
                         line-height 30px
                     .submit
                         width 60px
@@ -41,3 +44,9 @@ search
                     line-height 20px
                     text-align center
                     color rgba(#333, .7)
+        .result-no-keyword
+            margin 100px 0 0 0
+            font-size 16px
+            text-align center
+            color rgba(#000, .6)
+            
