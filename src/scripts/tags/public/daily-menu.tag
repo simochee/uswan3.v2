@@ -174,4 +174,4 @@ daily-menu
                                 &:first-child
                                     margin-top 30px
                     &.open
-                        background rgba(#fff, .8)
+                        background rgba(#fff, .7)
