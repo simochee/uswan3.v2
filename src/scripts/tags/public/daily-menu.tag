@@ -1,5 +1,5 @@
 daily-menu
-    .daily-menu
+    .daily-menu#dailyMenu
         .header 今日の献立
         .main
             .menu-item#dailyMenu-breakfast(class="{open: isOpen == 'breakfast', dailyMenuInit: init == 'breakfast'}" onclick="{open('breakfast')}")
@@ -59,7 +59,16 @@ daily-menu
             const $elem = $parent.getElementsByClassName('menu-side');
             const height = $elem[0].childNodes[1].clientHeight;
             $elem[0].style.height = `${height + padding}px`;
-            console.log('happen')
+            
+            // 高さにtransitionを追加
+            setTimeout(() => {
+                const $daily = document.getElementById('dailyMenu');
+                const $items = $daily.getElementsByClassName('menu-side');
+                Object.keys($items).forEach((idx) => {
+                    const $item = $items[idx];
+                    $item.style.transition = 'height .4s .2s ease';
+                });
+            }, 0);
         });
 
         this.open = (time) => {
@@ -146,7 +155,6 @@ daily-menu
                             position relative
                             overflow hidden
                             height 0
-                            transition height .4s .3s ease
                             &::before
                                 content ''
                                 position absolute

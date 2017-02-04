@@ -11,6 +11,11 @@ route('/menu', () => {
     riot.mount('router', 'menu');
 });
 
+route('/search', () => {
+    require('../tags/public/search');
+    riot.mount('router', 'search');
+});
+
 module.exports = {
     start: () => {
         route.start(true);
