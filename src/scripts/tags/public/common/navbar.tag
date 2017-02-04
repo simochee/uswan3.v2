@@ -23,7 +23,7 @@ navbar
                     .icon.ion-ios-grid-view-outline
                     .label 準備中
             li.nav-item
-                a.nav-anchor(href="https://twitter.com/uswan2_" target="_blank")
+                a.nav-anchor(href="//twitter.com/uswan2_" target="_blank")
                     .icon.ion-social-twitter-outline
                     .label Twitter
         .nav-large
