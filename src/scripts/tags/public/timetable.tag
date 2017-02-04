@@ -27,13 +27,13 @@ timetable
                 $size = 60px
                 position absolute
                 top 50%
-                right 0
+                left 0
                 margin-top -($size * 2.5)
                 &::before
                     content ''
                     position absolute
                     right 0
-                    width $size
+                    width 110px
                     height $size
                     background rgba(#fff, .5)
                     box-shadow 0 2px 2px 0 rgba(#000, .07), 0 3px 1px -2px rgba(#000, .1), 0 1px 5px 0 rgba(#000, .06)
@@ -56,7 +56,7 @@ timetable
                     &::before
                         top ($size * 4)
                 .controller-item
-                    width $size
+                    width 110px
                     height $size
                     text-align center
                     line-height $size
