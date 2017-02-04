@@ -1,11 +1,11 @@
 menu-item
 
-    .menu-item(class="{open: isOpen}" onclick="{toggle}")
+    .menu-item(id="menuItem{data.date}" class="{open: isOpen}" onclick="{toggle}" style="height: {height}px")
         .summary
             .date
                 .wrapper
-                    .day 14
-                    .week Sun
+                    .day {date}
+                    .week {weekday}
             .menu
                 .menu-main.breakfast
                     span.main-item(if="{data.breakfast.jap}") {data.breakfast.jap}
@@ -16,30 +16,39 @@ menu-item
                     span.main-a {data.dinner.a}
                     span.main-b {data.dinner.b}
         .detail
-            h1 hello
+            .date
+                .day {date}
+                .week {weekday}
 
     script(type="es6").
+        const moment = require('moment');
+    
         this.isOpen = false;
         this.toggle = () => {
             this.isOpen = !this.isOpen;
-        }
-    
-        this.data = {
-            breakfast: {
-                wes: 'ロールパン',
-                jap: null,
-                side: ['ソーセージとキャベツのフレンチサラダ', 'キャベツサラダ', 'スープ', '牛乳']
-            },
-            lunch: {
-                main: '叉焼炒飯',
-                side: ['かぼちゃのコロッケ', '味噌汁']
-            },
-            dinner: {
-                a: '和風ごまハンバーグ',
-                b: 'ハンバーグデミグラスソースと海老フライ',
-                side: ['小松菜とえのきの梅和え', 'ライス', '味噌汁']
+            if(this.isOpen) {
+                this.height = this.detailH;
+            } else {
+                this.height = this.summaryH;
             }
         }
+
+        this.data = opts.data;
+
+        const m = moment(this.data.date);
+        this.date = m.get('date');
+        this.weekday = m.format('ddd');
+
+        this.on('mount', () => {
+            const $elem = document.getElementById(`menuItem${this.data.date}`);
+            // 高さを保存
+            const $summary = document.getElementsByClassName('summary')[0];
+            this.summaryH = $summary.clientHeight;
+            const $detail = document.getElementsByClassName('detail')[0];
+            this.detailH = $detail.clientHeight;
+            this.height = this.summaryH;
+            this.update();
+        });
 
     style(type="stylus").
         .menu-item
@@ -48,7 +57,7 @@ menu-item
             margin 0 10px 30px
             box-shadow 0 2px 2px 0 rgba(#000, .14), 0 3px 1px -2px rgba(#000, .2), 0 1px 5px 0 rgba(#000, .12)
             background rgba(#fff, .1)
-            transition background .5s ease
+            transition background .5s ease, height .4s .2s ease
             .summary
                 display flex
                 transition transform .4s .2s ease
@@ -80,6 +89,15 @@ menu-item
                 left -100%
                 width 100%
                 transition left .4s .2s ease
+                .date
+                    margin 0 12px
+                    padding 10px 0
+                    border-bottom 1px solid rgba(#aaa, .3)
+                    text-align center
+                    .day
+                        font-size 16px
+                    .week
+                        font-size 10px
             &.open
                 background rgba(#fff, .5)
                 .summary
