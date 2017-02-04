@@ -1,5 +1,5 @@
 import './tags/public/common/navbar';
-import './tags/public/common/more-menu';
+import './tags/public/common/side-menu';
 riot.mount('navbar');
 
 import router from './public/router';

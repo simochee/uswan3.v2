@@ -1,4 +1,4 @@
-more-menu
+side-menu
     .side-menu(class="{open: isOpen}")
         header
             .brand デジタル版 白鳥寮献立表
@@ -32,33 +32,22 @@ more-menu
 
         this.isOpen = false;
 
-        obs.on('more-menu:toggle', () => {
+        obs.on('side-menu:toggle', () => {
             this.isOpen = !this.isOpen;
             this.update();
         });
 
-        obs.on('more-menu:open', () => {
+        obs.on('side-menu:open', () => {
             this.isOpen = true;
             this.update();
         });
 
-        obs.on('more-menu:close', () => {
+        obs.on('side-menu:close', () => {
             this.isOpen = false;
             this.update();
         });
 
     style(type="stylus").
-        .bottom-menu
-            position fixed
-            left 55px
-            bottom 0
-            right 0
-            height 55px
-            background #fff
-            z-index 1
-            transition bottom .3s ease
-            &.open
-                bottom 55px
         .side-menu
             position fixed
             top 0

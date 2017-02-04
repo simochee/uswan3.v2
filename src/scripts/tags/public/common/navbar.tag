@@ -15,7 +15,7 @@ navbar
                     .icon.ion-ios-information-outline
                     .label おしらせ
             li.nav-item
-                a.nav-anchor(href="#" target="_blank")
+                a.nav-anchor(href="#_" target="_blank")
                     .icon.ion-social-twitter-outline
                     .label Twitter
         .nav-large
@@ -27,7 +27,7 @@ navbar
                 .navicon.ion-navicon
                 .closer.ion-android-close
 
-    more-menu
+    side-menu
             
     script(type="es6").
         const u = require('../../../utils');
@@ -37,7 +37,7 @@ navbar
         this.toggleMoreMenu = (e) => {
             e.preventDefault();
             this.isOpen = !this.isOpen;
-            obs.trigger('more-menu:toggle');
+            obs.trigger('side-menu:toggle');
         }
 
     style(type="stylus").
@@ -46,7 +46,7 @@ navbar
             bottom 0
             left 0
             width 100%
-            height 55px
+            height 110px
             padding 0 60px 0 110px
             box-sizing border-box
             z-index 100
@@ -55,9 +55,10 @@ navbar
                 margin 0 -60px 0 -55px
                 padding 0 60px 0 55px
                 background #fff
+                transform translateY(55px)
                 transition transform .3s ease
                 &.open
-                    transform translateY(-55px)
+                    transform translateY(0)
                 .nav-item
                     float left
                     width 33.333%
@@ -76,7 +77,7 @@ navbar
             .nav-large
                 $size = 110px
                 position absolute
-                top -($size / 2)
+                bottom 0
                 left 0
                 width $size
                 height $size
@@ -107,8 +108,9 @@ navbar
                         line-height 35px
             .nav-more
                 position absolute
-                top 0
+                bottom 0
                 right 0
+                overflow hidden
                 width 60px
                 height 55px
                 font-size 36px
