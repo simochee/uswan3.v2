@@ -98,9 +98,9 @@ navbar
                     display block
                     width ($size - 14)
                     height ($size - 14)
-                    margin 4px
+                    margin 5px
                     border-radius 100%
-                    border 3px solid  #222
+                    border 2px solid  #222
                     color #222
                     .icon
                         font-size 40px

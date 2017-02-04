@@ -2,24 +2,30 @@ daily-menu
     .daily-menu
         .header 今日の献立
         .main
-            .menu-item#dailyMenu-breakfast(class="{open: isOpen == 'breakfast'}" onclick="{open('breakfast')}")
+            .menu-item#dailyMenu-breakfast(class="{open: isOpen == 'breakfast', dailyMenuInit: init == 'breakfast'}" onclick="{open('breakfast')}")
                 .label 朝
                 .menu-body
-                    .menu-main {today.breakfast.main}
+                    .menu-main
+                        .main-breakfast
+                            span.main-item(if="{today.breakfast.jap}") {today.breakfast.jap}
+                            span.main-item(if="{today.breakfast.wes}") {today.breakfast.wes}
                     .menu-side
                         ul
                             li(each="{item in today.breakfast.side}") {item}
-            .menu-item#dailyMenu-lunch(class="{open: isOpen == 'lunch'}" onclick="{open('lunch')}")
+            .menu-item#dailyMenu-lunch(class="{open: isOpen == 'lunch', dailyMenuInit: init == 'lunch'}" onclick="{open('lunch')}")
                 .label 昼
                 .menu-body
                     .menu-main {today.lunch.main}
                     .menu-side
                         ul
                             li(each="{item in today.lunch.side}") {item}
-            .menu-item#dailyMenu-dinner(class="{open: isOpen == 'dinner'}" onclick="{open('dinner')}")
+            .menu-item#dailyMenu-dinner(class="{open: isOpen == 'dinner', dailyMenuInit: init == 'dinner'}" onclick="{open('dinner')}")
                 .label 夜
                 .menu-body
-                    .menu-main {today.dinner.main}
+                    .menu-main
+                        .main-dinner
+                            span.main-a {today.dinner.a}
+                            span.main-b {today.dinner.b}
                     .menu-side
                         ul
                             li(each="{item in today.dinner.side}") {item}
@@ -27,16 +33,18 @@ daily-menu
     script(type="es6").
         this.today = {
             breakfast: {
-                main: 'ごはん',
-                side: ['納豆', '味噌汁', '牛乳']
+                wes: 'ロールパン',
+                jap: null,
+                side: ['キャベツサラダ', 'スープ', '牛乳']
             },
             lunch: {
-                main: 'カレーうどん',
-                side: ['サラダ']
+                main: '叉焼炒飯',
+                side: ['かぼちゃのコロッケ', '味噌汁']
             },
             dinner: {
-                main: '焼き魚のフィレット',
-                side: ['なんか', 'いろいろある', 'おひたし', 'サラダ', '味噌汁']
+                a: '和風ごまハンバーグ',
+                b: '白身魚のグリル　野菜たっぷりトマトソース',
+                side: ['小松菜とえのきの梅和え', 'ライス', '味噌汁']
             }
         }
 
@@ -44,6 +52,15 @@ daily-menu
         this.isOpen = this.init;
 
         const lineHeight = 30;
+
+        this.on('mount', () => {
+            // 高さを付与
+            const $parent = document.getElementsByClassName(`dailyMenuInit`)[0];
+            const $elem = $parent.getElementsByClassName('menu-side');
+            const len = this.today[this.init].side.length;
+            $elem[0].style.height = `${len * lineHeight}px`;
+            console.log('happen')
+        });
 
         this.open = (time) => {
             return (e) => {
@@ -78,23 +95,61 @@ daily-menu
             .main
                 .menu-item
                     display flex
-                    align-content center
-                    padding 8px 20px
+                    align-items center
+                    padding 8px 55px 8px 20px
                     transition all .6s ease
                     .label
                         width 20px
                         height 20px
-                        font-size 11px
+                        margin-right 15px
                         border 1px solid  #333
                         border-radius 100%
+                        font-size 11px
                         text-align center
                         line-height 20px
                     .menu-body
                         flex 1
+                        .menu-main
+                            margin 8px 0
+                            text-align center
+                            font-size 20px
+                            line-height 28px
+                            .main-breakfast
+                                span
+                                    &:nth-child(2)
+                                        &::before
+                                            content '/'
+                            .main-dinner
+                                span
+                                    display block
+                                    &:not(:first-child)
+                                        margin-top 8px
+                                    &.main-a,
+                                    &.main-b
+                                        &::before
+                                            display inline-block
+                                            width 20px
+                                            height 20px
+                                            margin-right .4em
+                                            line-height 20px
+                                            font-size 16px
+                                            background #333
+                                            color #eee
+                                            transform translateY(-2px)
+                                    &.main-a
+                                        &::before
+                                            content 'A'
+                                    &.main-b
+                                        &::before
+                                            content 'B'
                         .menu-side
                             overflow hidden
                             height 0
-                            transition height .3s ease
+                            transition height .3s 
+                            li
+                                font-size 16px
+                                line-height 30px
+                                text-align center
                     &.open
                         background rgba(#fff, .8)
                         .menu-body
