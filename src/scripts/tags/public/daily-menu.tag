@@ -35,7 +35,7 @@ daily-menu
             breakfast: {
                 wes: 'ロールパン',
                 jap: null,
-                side: ['キャベツサラダ', 'スープ', '牛乳']
+                side: ['ソーセージとキャベツのフレンチサラダ', 'キャベツサラダ', 'スープ', '牛乳']
             },
             lunch: {
                 main: '叉焼炒飯',
@@ -43,7 +43,7 @@ daily-menu
             },
             dinner: {
                 a: '和風ごまハンバーグ',
-                b: '白身魚のグリル　野菜たっぷりトマトソース',
+                b: 'ハンバーグデミグラスソースと海老フライ',
                 side: ['小松菜とえのきの梅和え', 'ライス', '味噌汁']
             }
         }
@@ -51,14 +51,14 @@ daily-menu
         this.init = 'breakfast';
         this.isOpen = this.init;
 
-        const lineHeight = 30;
+        const padding = 30;
 
         this.on('mount', () => {
             // 高さを付与
             const $parent = document.getElementsByClassName(`dailyMenuInit`)[0];
             const $elem = $parent.getElementsByClassName('menu-side');
-            const len = this.today[this.init].side.length;
-            $elem[0].style.height = `${len * lineHeight + 10}px`;
+            const height = $elem[0].childNodes[1].clientHeight;
+            $elem[0].style.height = `${height + padding}px`;
             console.log('happen')
         });
 
@@ -73,8 +73,8 @@ daily-menu
                     // 高さを付与
                     const $parent = document.getElementById(`dailyMenu-${time}`);
                     const $elem = $parent.getElementsByClassName('menu-side');
-                    const len = this.today[time].side.length;
-                    $elem[0].style.height = `${len * lineHeight + 10}px`;
+                    const height = $elem[0].childNodes[1].clientHeight;
+                    $elem[0].style.height = `${height + padding}px`;
                     this.isOpen = time;
                 }
             }
@@ -112,7 +112,7 @@ daily-menu
                         .menu-main
                             margin 8px 0
                             text-align center
-                            font-size 20px
+                            font-size 18px
                             line-height 28px
                             .main-breakfast
                                 span
@@ -128,14 +128,14 @@ daily-menu
                                     &.main-b
                                         &::before
                                             display inline-block
-                                            width 20px
-                                            height 20px
+                                            width 18px
+                                            height 18px
                                             margin-right .4em
-                                            line-height 20px
+                                            line-height 16px
                                             font-size 16px
                                             background #333
                                             color #eee
-                                            transform translateY(-2px)
+                                            transform translateY(-1px)
                                     &.main-a
                                         &::before
                                             content 'A'
@@ -167,11 +167,12 @@ daily-menu
                                 background #fff
                                 transform rotate(45deg)
                             li
-                                font-size 16px
-                                line-height 30px
+                                margin-bottom 10px
+                                font-size 14px
+                                line-height 20px
                                 text-align center
                                 &:first-child
-                                    margin-top 20px
+                                    margin-top 30px
                     &.open
                         background rgba(#fff, .8)
                         .menu-body
