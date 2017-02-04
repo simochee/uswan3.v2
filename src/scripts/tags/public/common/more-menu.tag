@@ -1,9 +1,4 @@
 more-menu
-    .bottom-menu(class="{open: isOpen}")
-        ul.bottom-nav
-            li.nav-item
-
-
     .side-menu(class="{open: isOpen}")
         header
             .brand デジタル版 白鳥寮献立表
