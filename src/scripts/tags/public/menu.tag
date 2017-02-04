@@ -2,6 +2,15 @@ menu
     .daily-menu
         .header 今日の献立
         .main
+            input.visibility-input#dailyMenuBreakfast(type="radio" name="dailyMenu" checked)
+            label.menu-item(for="dailyMenuBreakfast")
+                .label 朝
+            input.visibility-input#dailyMenuLunch(type="radio" name="dailyMenu")
+            label.menu-item(for="dailyMenuLunch")
+                .label 昼
+            input.visibility-input#dailyMenuDinner(type="radio" name="dailyMenu")
+            label.menu-item(for="dailyMenuDinner")
+                .label 夜
 
 
     style(type="stylus").
@@ -16,3 +25,20 @@ menu
                 font-size 14px
                 line-height 40px
                 text-align center
+            .main
+                .visibility-input
+                    display none
+                    &:checked + .menu-item
+                        background rgba(#fff, .8)
+                .menu-item
+                    display block
+                    padding 8px 20px
+                    transition all .6s ease
+                    .label
+                        width 20px
+                        height 20px
+                        font-size 11px
+                        border 1px solid  #333
+                        border-radius 100%
+                        text-align center
+                        line-height 20px

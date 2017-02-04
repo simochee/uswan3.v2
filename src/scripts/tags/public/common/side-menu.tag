@@ -4,6 +4,10 @@ side-menu
             .brand デジタル版 白鳥寮献立表
         main
             .preferences
+                h3 フィードバック
+                p ご指摘・ご意見などお気軽にお送りください！
+                form.feedback-form(onsubmit="return false")
+                    textarea(placeholder="内容は公開されます。個人情報の記載はご遠慮下さい。")
                 h3 設定
                 dl
                     dt 最初に表示するページ
@@ -17,7 +21,6 @@ side-menu
                     dt デフォルトのクラス
                         .select
                             .label
-
 
 
     script(type="es6").
@@ -53,15 +56,18 @@ side-menu
             top 0
             right -240px
             bottom 55px
+            overflow-y auto
             width 240px
+            padding-bottom 55px
             background #fff
+            box-sizing border-box
             transition right .3s ease
             &.open
                 right 0
             header
                 position relative
                 width 100%
-                height 160px
+                height 120px
                 background #ad1514
                 .brand
                     height 120px
@@ -76,13 +82,6 @@ side-menu
                     color rgba(#fff, 0.4)
                     font-size 10px
             main
-                position absolute
-                top 120px
-                left 0
-                bottom 0
-                right 0
-                overflow-y auto
-                padding-bottom 55px
                 background #fff
                 .menu-nav
                     padding 25px 0
