@@ -32,7 +32,7 @@ info
 
     style(type='stylus').
         h1
-            margin 20px 15px 10px 15px
+            margin 20px 15px 30px 15px
             .ja
                 font-size 26px
             .en
@@ -46,7 +46,7 @@ info
                 background rgba(#fff, .1)
                 h2
                     margin 0 10px
-                    padding 8px 6px
+                    padding 12px 6px
                     border-bottom 1px solid rgba(#555, .2)
                     font-size 14px
                     color rgba(#000, .8)
