@@ -97,7 +97,7 @@ daily-menu
                     display flex
                     align-items center
                     padding 8px 55px 8px 20px
-                    transition all .6s ease
+                    transition background .6s ease
                     .label
                         width 20px
                         height 20px
@@ -146,7 +146,7 @@ daily-menu
                             position relative
                             overflow hidden
                             height 0
-                            transition height .3s 
+                            transition height .4s .3s ease
                             &::before
                                 content ''
                                 position absolute
@@ -175,6 +175,3 @@ daily-menu
                                     margin-top 30px
                     &.open
                         background rgba(#fff, .8)
-                        .menu-body
-                            .menu-side
-                                transition height .4s .3s ease
