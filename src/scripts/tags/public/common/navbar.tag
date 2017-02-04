@@ -1,6 +1,6 @@
 navbar
 
-    nav.navbar
+    nav.navbar(class="{hide: !isShow}")
         ul.navbar-nav(class="{open: isOpen}")
             li.nav-item
                 a.nav-anchor(href="#/search" onclick="{close}")
@@ -42,9 +42,11 @@ navbar
         const obs = u.observable();
     
         this.isOpen = false;
+        this.isShow = true;
         this.toggleMoreMenu = (e) => {
             e.preventDefault();
             this.isOpen = !this.isOpen;
+            this.isShow = true;
             obs.trigger('side-menu:toggle');
         }
 
@@ -54,6 +56,15 @@ navbar
 
         obs.on('side-menu:close', () => {
             this.isOpen = false;
+            this.update();
+        });
+
+        obs.on('navbar:show', () => {
+            this.isShow = true;
+            this.update();
+        });
+        obs.on('navbar:hide', () => {
+            this.isShow = false;
             this.update();
         });
 
@@ -67,6 +78,8 @@ navbar
             padding 0 60px 0 110px
             box-sizing border-box
             z-index 100
+            &.hide
+                display none
             .navbar-nav
                 height 110px
                 margin 0 -60px 0 -55px

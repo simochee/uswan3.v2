@@ -3,11 +3,22 @@ search
         .header 検索
         .main
             form.input-area(onsubmit="return false")
-                input.input(type="text" placeholder="検索ワード")
+                input.input(type="text" placeholder="検索ワード" onfocus="{hideNavbar}" onblur="{showNavbar}")
                 button.submit(type="submit") 検索
             p.help-block 直近１ヶ月の献立から検索します
     
     .result-no-keyword 検索ワードを指定してください
+    
+    script(type="es6").
+        const u = require('../../utils');
+        const obs = u.observable();
+    
+        this.hideNavbar = () => {
+            obs.trigger('navbar:hide');
+        }
+        this.showNavbar = () => {
+            obs.trigger('navbar:show');
+        }
     
     style(type="stylus").
         .search-box

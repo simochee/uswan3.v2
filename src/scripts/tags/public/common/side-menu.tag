@@ -7,7 +7,7 @@ side-menu
                 h3 フィードバック
                 p ご指摘・ご意見などお気軽にお送りください！
                 form.feedback-form(onsubmit="return false")
-                    textarea(placeholder="内容は公開されます。個人情報の記載はご遠慮下さい。")
+                    textarea(placeholder="内容は公開されます。個人情報の記載はご遠慮下さい。" onfocus="{hideNavbar}" onblur="{showNavbar}")
                 h3 設定
                 dl
                     dt 最初に表示するページ
@@ -57,12 +57,19 @@ side-menu
             obs.trigger('side-menu:close');
         }
 
+        this.hideNavbar = () => {
+            obs.trigger('navbar:hide');
+        }
+        this.showNavbar = () => {
+            obs.trigger('navbar:show');
+        }
+
     style(type="stylus").
         .side-menu
             position fixed
             top 0
             right -240px
-            bottom 55px
+            bottom 0
             overflow-y auto
             width 240px
             padding-bottom 55px
