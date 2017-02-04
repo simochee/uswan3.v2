@@ -19,9 +19,9 @@ navbar
                     .icon.ion-ios-grid-view-outline
                     .label 準備中
             li.nav-item
-                span.nav-anchor
-                    .icon.ion-ios-grid-view-outline
-                    .label 準備中
+                a.nav-anchor(href="//www.ube-k.ac.jp/hakucho-domitory/" target="_blank")
+                    .icon.ion-ios-home-outline
+                    .label 白鳥寮
             li.nav-item
                 a.nav-anchor(href="//twitter.com/uswan2_" target="_blank")
                     .icon.ion-social-twitter-outline

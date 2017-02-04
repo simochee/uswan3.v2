@@ -58,7 +58,7 @@ daily-menu
             const $parent = document.getElementsByClassName(`dailyMenuInit`)[0];
             const $elem = $parent.getElementsByClassName('menu-side');
             const len = this.today[this.init].side.length;
-            $elem[0].style.height = `${len * lineHeight}px`;
+            $elem[0].style.height = `${len * lineHeight + 10}px`;
             console.log('happen')
         });
 
@@ -74,7 +74,7 @@ daily-menu
                     const $parent = document.getElementById(`dailyMenu-${time}`);
                     const $elem = $parent.getElementsByClassName('menu-side');
                     const len = this.today[time].side.length;
-                    $elem[0].style.height = `${len * lineHeight}px`;
+                    $elem[0].style.height = `${len * lineHeight + 10}px`;
                     this.isOpen = time;
                 }
             }
@@ -143,13 +143,35 @@ daily-menu
                                         &::before
                                             content 'B'
                         .menu-side
+                            position relative
                             overflow hidden
                             height 0
                             transition height .3s 
+                            &::before
+                                content ''
+                                position absolute
+                                top 10px
+                                left 50%
+                                width 30px
+                                margin-left -15px
+                                border-bottom 1px dashed #444
+                            &::after
+                                content ''
+                                position absolute
+                                top 10px
+                                left 50%
+                                width 3px
+                                height 3px
+                                margin -2.5px
+                                border 1px solid  #444
+                                background #fff
+                                transform rotate(45deg)
                             li
                                 font-size 16px
                                 line-height 30px
                                 text-align center
+                                &:first-child
+                                    margin-top 20px
                     &.open
                         background rgba(#fff, .8)
                         .menu-body
