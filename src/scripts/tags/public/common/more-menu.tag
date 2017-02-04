@@ -35,7 +35,7 @@ more-menu
             this.firstValue = e.target.selectedOptions[0].text;
         }
 
-        this.isOpen = true;
+        this.isOpen = false;
 
         obs.on('more-menu:toggle', () => {
             this.isOpen = !this.isOpen;

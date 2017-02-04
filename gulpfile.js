@@ -18,6 +18,7 @@ gulp.task('webpack', () => {
 
 gulp.task('stylus', () => {
     gulp.src('./src/stylus/**/!(_)*.styl')
+        .pipe(plumber())
         .pipe(sourcemaps.init())
         .pipe(stylus())
         .pipe(minifyCss({ advanced: false }))
