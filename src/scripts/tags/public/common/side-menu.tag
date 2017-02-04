@@ -22,6 +22,7 @@ side-menu
                         .select
                             .label
 
+    .close-wall(class="{open: isOpen}" onclick="{close}")
 
     script(type="es6").
         const u = require('../../../utils');
@@ -36,6 +37,7 @@ side-menu
         this.isOpen = false;
 
         obs.on('side-menu:toggle', () => {
+            console.log('TOGGLE!')
             this.isOpen = !this.isOpen;
             this.update();
         });
@@ -50,6 +52,11 @@ side-menu
             this.update();
         });
 
+        this.close = (e) => {
+            e.preventDefault();
+            obs.trigger('side-menu:close');
+        }
+
     style(type="stylus").
         .side-menu
             position fixed
@@ -62,6 +69,7 @@ side-menu
             background #fff
             box-sizing border-box
             transition right .3s ease
+            z-index 50
             &.open
                 right 0
             header
@@ -125,3 +133,17 @@ side-menu
                                     display block
                                     width 100%
                                     height 35px
+        .close-wall
+            position absolute
+            top 0
+            left 0
+            bottom 0
+            right 0
+            visibility hidden
+            background-color transparent
+            transition visibility 0s .4s ease, background .4s ease
+            z-index 10
+            &.open
+                visibility visible
+                background-color rgba(#000, .3)
+                transition background .4s ease

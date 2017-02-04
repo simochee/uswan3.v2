@@ -35,7 +35,7 @@ timetable
                     right 0
                     width 110px
                     height $size
-                    background rgba(#fff, .5)
+                    background rgba(#fff, .3)
                     box-shadow 0 2px 2px 0 rgba(#000, .07), 0 3px 1px -2px rgba(#000, .1), 0 1px 5px 0 rgba(#000, .06)
                     box-sizing border-box
                     z-index -1

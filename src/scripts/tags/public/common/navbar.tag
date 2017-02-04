@@ -3,15 +3,15 @@ navbar
     nav.navbar
         ul.navbar-nav(class="{open: isOpen}")
             li.nav-item
-                a.nav-anchor(href="#/search")
+                a.nav-anchor(href="#/search" onclick="{close}")
                     .icon.ion-android-search
                     .label 検索
             li.nav-item
-                a.nav-anchor(href="#/timetable")
+                a.nav-anchor(href="#/timetable" onclick="{close}")
                     .icon.ion-ios-calendar-outline
                     .label 時間割
             li.nav-item
-                a.nav-anchor(href="#/info")
+                a.nav-anchor(href="#/info" onclick="{close}")
                     .icon.ion-ios-information-outline
                     .label おしらせ
             li.nav-item
@@ -19,15 +19,15 @@ navbar
                     .icon.ion-ios-grid-view-outline
                     .label 準備中
             li.nav-item
-                a.nav-anchor(href="//www.ube-k.ac.jp/hakucho-domitory/" target="_blank")
+                a.nav-anchor(href="//www.ube-k.ac.jp/hakucho-domitory/" target="_blank" onclick="{close}")
                     .icon.ion-ios-home-outline
                     .label 白鳥寮
             li.nav-item
-                a.nav-anchor(href="//twitter.com/uswan2_" target="_blank")
+                a.nav-anchor(href="//twitter.com/uswan2_" target="_blank" onclick="{close}")
                     .icon.ion-social-twitter-outline
                     .label Twitter
         .nav-large
-            a.nav-large-wrapper(href="#/menu")
+            a.nav-large-wrapper(href="#/menu" onclick="{close}")
                 .icon.ion-coffee
                 .label 献立表
         .nav-more
@@ -47,6 +47,15 @@ navbar
             this.isOpen = !this.isOpen;
             obs.trigger('side-menu:toggle');
         }
+
+        this.close = (e) => {
+            obs.trigger('side-menu:close');
+        }
+
+        obs.on('side-menu:close', () => {
+            this.isOpen = false;
+            this.update();
+        });
 
     style(type="stylus").
         .navbar
