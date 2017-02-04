@@ -82,7 +82,6 @@ side-menu
                     color rgba(#fff, 0.4)
                     font-size 10px
             main
-                background #fff
                 .menu-nav
                     padding 25px 0
                     .nav-item
