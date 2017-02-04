@@ -305,7 +305,7 @@ timetable
                                 margin 0 20px
                                 border-bottom 1px solid rgba(#555, .2)
                                 .time
-                                    width 60px
+                                    width 30px
                                     margin 10px 0
                                     border-right 1px solid rgba(#555, .15)
                                 .subject

@@ -3,24 +3,26 @@ side-menu
         header
             .brand デジタル版 白鳥寮献立表
         main
-            .preferences
+            .feedback
                 h3 フィードバック
                 p ご指摘・ご意見などお気軽にお送りください！
-                form.feedback-form(onsubmit="return false")
-                    textarea(placeholder="内容は公開されます。個人情報の記載はご遠慮下さい。" onfocus="{hideNavbar}" onblur="{showNavbar}")
-                h3 設定
-                dl
-                    dt 最初に表示するページ
-                    dd
-                        .select-full
-                            .label {firstValue || '今月の献立'}
-                            select.input(onchange="{updateFirstView}")
-                                option(value="#/menu") 今日からの献立
-                                option(value="") 時間割
-                                option(value="") おしらせ
-                    dt デフォルトのクラス
-                        .select
-                            .label
+                form.feedback-form(class="{error: this.count < 0}" onsubmit="return false")
+                    textarea.textarea(placeholder="内容は公開されます。個人情報の記載はご遠慮下さい。" onkeyup="{letterCount}" onfocus="{hideNavbar}" onblur="{showNavbar}")
+                    button.submit(type="submit" disabled="{error: this.count < 0}") 送信
+                    .count {this.count}
+                //- h3 設定
+                //- dl
+                //-     dt 最初に表示するページ
+                //-     dd
+                //-         .select-full
+                //-             .label {firstValue || '今月の献立'}
+                //-             select.input(onchange="{updateFirstView}")
+                //-                 option(value="#/menu") 今日からの献立
+                //-                 option(value="") 時間割
+                //-                 option(value="") おしらせ
+                //-     dt デフォルトのクラス
+                //-         .select
+                //-             .label
 
     .close-wall(class="{open: isOpen}" onclick="{close}")
 
@@ -34,7 +36,13 @@ side-menu
             this.firstValue = e.target.selectedOptions[0].text;
         }
 
-        this.isOpen = false;
+        this.count = 100;
+        this.letterCount = (e) => {
+            const len = e.target.value.length;
+            this.count = 100 - len;
+        }
+
+        this.isOpen = true;
 
         obs.on('side-menu:toggle', () => {
             console.log('TOGGLE!')
@@ -97,17 +105,54 @@ side-menu
                     color rgba(#fff, 0.4)
                     font-size 10px
             main
-                .menu-nav
-                    padding 25px 0
-                    .nav-item
-                        .nav-anchor
+                padding 15px 10px
+                .feedback
+                    h3
+                        color #333
+                        font-size 16px
+                        line-height 30px
+                    p
+                        font-size 12px
+                        color #555
+                        line-height 18px
+                    .feedback-form
+                        position relative
+                        margin 8px 10px
+                        .textarea
                             display block
-                            height 50px
-                            padding 0 20px
-                            font-size 15px
-                            line-height 50px
-                            color #444a5a
-                            text-decoration none
+                            width 100%
+                            height 150px
+                            padding 10px 8px
+                            border 1px solid #eee
+                            box-sizing border-box
+                            resize none
+                            line-height 16px
+                            font-size 13px
+                        .submit
+                            width 80px
+                            height 35px
+                            margin-top 10px
+                            border 1px solid #333
+                            line-height 35px
+                            letter-spacing .4em
+                            text-indent .4em
+                            transition background .2s ease, color .2s ease
+                            &:not([disabled="disabled"])
+                                &:hover
+                                    background #333
+                                    color #fff
+                            &[disabled="disabled"]
+                                border-color #aaa
+                                color #aaa
+                        .count
+                            position absolute
+                            right 5px
+                            bottom 25px
+                            font-size 11px
+                            line-height 15px
+                        &.error
+                            .count
+                                color #f00
                 .preferences
                     margin 0 15px 0
                     h3
