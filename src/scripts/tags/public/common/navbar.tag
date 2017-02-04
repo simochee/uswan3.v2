@@ -54,7 +54,7 @@ navbar
             bottom 0
             left 0
             width 100%
-            height 110px
+            height 0
             padding 0 60px 0 110px
             box-sizing border-box
             z-index 100
@@ -63,10 +63,10 @@ navbar
                 margin 0 -60px 0 -55px
                 padding 0 60px 0 55px
                 background #fff
-                transform translateY(55px)
+                transform translateY(-55px)
                 transition transform .3s ease
                 &.open
-                    transform translateY(0)
+                    transform translateY(-110px)
                 .nav-item
                     float left
                     width 33.333%

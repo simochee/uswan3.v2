@@ -6,6 +6,7 @@ route('/', () => {
 
 route('/menu', () => {
     require('../tags/public/menu');
+    require('../tags/public/daily-menu');
     riot.mount('router', 'menu');
 });
 
