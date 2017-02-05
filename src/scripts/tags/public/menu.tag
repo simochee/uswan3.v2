@@ -10,7 +10,7 @@ menu
                 span.en February
         menu-item(if="{i != 0}" data="{item}")
         .ad.ad-md.ad-menulist(if="{i % 7 == 6}")
-            img(src="https://placehold.jp/320x100.png")
+            img(src="http://bentographics.com/site/wp-content/uploads/2014/12/4_ADS_320%C3%97100.png" width="320")
 
 
     script(type="es6").

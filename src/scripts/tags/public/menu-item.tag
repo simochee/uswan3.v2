@@ -16,13 +16,11 @@ menu-item
                     span.main-a {data.dinner.a}
                     span.main-b {data.dinner.b}
         .detail
-            .date
+            .header
                 .day {date}
                 .week {weekday}
-            .tweet
-                span.ion-social-twitter-outline
-            .back(onclick="{close}")
-                span.ion-ios-arrow-right
+                button.back(type="button" onclick="{close}")
+                    span.ion-ios-arrow-right
             .menu
                 .menu-main.breakfast
                     span.main-item(if="{data.breakfast.jap}") {data.breakfast.jap}
@@ -151,7 +149,8 @@ menu-item
                 left -100%
                 width 100%
                 transition left .4s .2s ease
-                .date
+                .header
+                    position relative
                     margin 0 12px
                     padding 10px 0
                     border-bottom 1px solid rgba(#aaa, .3)
@@ -160,25 +159,13 @@ menu-item
                         font-size 16px
                     .week
                         font-size 10px
-                .tweet
-                    position absolute
-                    top 0
-                    left 0
-                    width 60px
-                    height 50px
-                    font-size 25px
-                    text-align center
-                    line-height 50px
-                    opacity .8
-                .back
-                    position absolute
-                    top 0
-                    right 0
-                    width 60px
-                    height 50px
-                    font-size 25px
-                    text-align center
-                    line-height 50px
+                    .back
+                        position absolute
+                        top 0
+                        right -12px
+                        bottom 0
+                        width 60px
+                        font-size 25px
                 .menu
                     padding 20px 0
                     .menu-main
