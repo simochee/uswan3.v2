@@ -37,12 +37,14 @@ archive
                     justify-content center
                     margin 0 20px 8px
                     .date-picker
+                        display block
                         width 150px
                         padding 0 12px
                         border 1px solid rgba(#ccc, .5)
                         background rgba(#fff, .3)
                         line-height 30px
                     .submit
+                        display block
                         width 60px
                         background rgba(#ccc, .5)
                         color rgba(#000, .8)
