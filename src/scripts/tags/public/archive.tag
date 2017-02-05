@@ -3,7 +3,7 @@ archive
         .header 過去の献立を表示
         .main
             form.input-area(onclick="return false")
-                input.date-picker(type="month")
+                input(type="text")
                 button.submit(type="submit") 表示
 
     .result
