@@ -1,6 +1,6 @@
 curfew
 
-    .curfew-dialog(class="{hide: isOpen}")
+    .curfew-dialog(class="{wraped: isOpen, hide: !isShow}")
         .curfew-container
             p 門限を確認しましたか？
 
@@ -12,10 +12,21 @@ curfew
         
         obs.on('side-menu:toggle', () => {
             this.isOpen = !this.isOpen;
+            this.update();
         });
-
         obs.on('side-menu:close', () => {
             this.isOpen = false;
+            this.update();
+        });
+
+        this.isShow = true;
+        obs.on('navbar:show', () => {
+            this.isShow = true;
+            this.update();
+        });
+        obs.on('navbar:hide', () => {
+            this.isShow = false;
+            this.update();
         });
 
     style(type="stylus").
@@ -29,8 +40,10 @@ curfew
             box-sizing border-box
             background #903d67
             transition background .5s ease
-            &.hide
+            &.wraped
                 background darken(#f04, 80%)
+            &.hide
+                visibility hidden
             .curfew-container
                 p
                     text-align center
