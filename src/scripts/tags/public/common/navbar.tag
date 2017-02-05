@@ -11,9 +11,9 @@ navbar
                     .icon.ion-ios-calendar-outline
                     .label 時間割
             li.nav-item
-                a.nav-anchor(href="#/info" onclick="{close}")
-                    .icon.ion-ios-information-outline
-                    .label おしらせ
+                a.nav-anchor(href="#/archive" onclick="{close}")
+                    .icon.ion-ios-bookmarks-outline
+                    .label 過去の献立
             li.nav-item
                 span.nav-anchor
                     .icon.ion-ios-grid-view-outline
