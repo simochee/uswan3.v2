@@ -212,6 +212,7 @@ timetable
             left 0
             bottom 55px
             right 0
+            opacity .5
             filter: blur(4px)
             pointer-events: none
             .week-controller
