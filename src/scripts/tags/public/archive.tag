@@ -33,10 +33,9 @@ archive
                 padding-bottom 8px
                 .input-area
                     display flex
-                    // justify-content center
                     margin 0 20px 8px
                     .date-picker
-                        width 150px
+                        flex 1
                         padding 0 12px
                         border 1px solid rgba(#ccc, .5)
                         background rgba(#fff, .3)
