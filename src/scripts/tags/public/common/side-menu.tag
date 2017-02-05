@@ -3,28 +3,59 @@ side-menu
         header
             .brand デジタル版 白鳥寮献立表
         main
-            .feedback
-                h3 インフォメーション
-                p 白鳥寮のインフォメーションです
-                ul.informations
-                    li
-                        .input-group
-                            .input
-                                input(type="text" value="山口県宇部市常盤台2丁目12番1号")
-                            .button
-                                button.btn(type="button" onclick="{toggleAddressOption}")
-                                    span.ion-android-arrow-dropdown
-                            .button
-                                button.btn(type="button")
-                                    span.ion-ios-copy-outline
-                        .address-option
-                            
-                h3 フィードバック
-                p ご指摘・ご意見などお気軽にお送りください！
-                form.feedback-form(class="{error: this.count < 0}" onsubmit="{sendFeedback}")
-                    textarea.textarea(placeholder="{limit ? 'ご意見ありがとうございました！' : '内容は公開されます。個人情報の記載はご遠慮下さい'}" disabled="{limit}" onkeyup="{letterCount}" onfocus="{hideNavbar}" onblur="{showNavbar}")
-                    button.submit(type="submit" disabled="{limit: limit, error: this.count < 0}") 送信
-                    .count {this.count}
+            h3 インフォメーション
+            ul.informations
+                li
+                    .input-group
+                        .input
+                            input(type="text" value="7550097" readonly)
+                        .button
+                            button.btn(type="button" onclick="{togglePostalOption}")
+                                span.ion-android-arrow-dropdown
+                        .button
+                            button.btn(type="button")
+                                span.ion-ios-copy-outline
+                    .postal-option
+                        label
+                            input(type="checkbox")
+                            | 755
+                        label
+                            input(type="checkbox")
+                            | -
+                        label
+                            input(type="checkbox")
+                            | 0097
+                li
+                    .input-group
+                        .input
+                            input(type="text" value="山口県宇部市常盤台2丁目12番1号" readonly)
+                        .button
+                            button.btn(type="button" onclick="{toggleAddressOption}")
+                                span.ion-android-arrow-dropdown
+                        .button
+                            button.btn(type="button")
+                                span.ion-ios-copy-outline
+                    .address-option
+                        label
+                            input(type="checkbox")
+                            | 山口県
+                        label
+                            input(type="checkbox")
+                            | 宇部市
+                        label
+                            input(type="checkbox")
+                            | 常盤台
+                        label 
+                            input(type="checkbox")
+                            | 2丁目
+                        label
+                            input(type="checkbox")
+                            | 12番1号
+            h3 フィードバック
+            form.feedback-form(class="{error: this.count < 0}" onsubmit="{sendFeedback}")
+                textarea.textarea(placeholder="{limit ? 'ご意見ありがとうございました！' : '内容は公開されます。個人情報の記載はご遠慮下さい'}" disabled="{limit}" onkeyup="{letterCount}" onfocus="{hideNavbar}" onblur="{showNavbar}")
+                button.submit(type="submit" disabled="{limit: limit, error: this.count < 0}") 送信
+                .count {this.count}
                 //- h3 設定
                 //- dl
                 //-     dt 最初に表示するページ
@@ -81,7 +112,7 @@ side-menu
             this.firstValue = e.target.selectedOptions[0].text;
         }
 
-        this.isOpen = false;
+        this.isOpen = true;
 
         obs.on('side-menu:toggle', () => {
             console.log('TOGGLE!')
@@ -148,54 +179,83 @@ side-menu
                     font-size 10px
             main
                 padding 0 10px 15px
-                .feedback
-                    h3
-                        margin-top 15px
-                        color #333
-                        font-size 16px
-                        line-height 30px
-                    p
+                h3
+                    margin-top 15px
+                    color #333
+                    font-size 16px
+                    line-height 30px
+                p
+                    font-size 11px
+                    color #555
+                    line-height 18px
+                .feedback-form
+                    position relative
+                    margin 8px 3px
+                    .textarea
+                        display block
+                        width 100%
+                        height 90px
+                        padding 10px 8px
+                        border 1px solid #eee
+                        box-sizing border-box
+                        resize none
+                        line-height 16px
+                        font-size 13px
+                    .submit
+                        width 80px
+                        height 35px
+                        margin-top 10px
+                        border 1px solid #333
+                        line-height 35px
+                        letter-spacing .4em
+                        text-indent .4em
+                        transition background .2s ease, color .2s ease
+                        &:not([disabled="disabled"])
+                            &:hover
+                                background #333
+                                color #fff
+                        &[disabled="disabled"]
+                            border-color #aaa
+                            color #aaa
+                    .count
+                        position absolute
+                        right 5px
+                        bottom 25px
                         font-size 11px
-                        color #555
-                        line-height 18px
-                    .feedback-form
-                        position relative
-                        margin 8px 3px
-                        .textarea
-                            display block
-                            width 100%
-                            height 90px
-                            padding 10px 8px
-                            border 1px solid #eee
-                            box-sizing border-box
-                            resize none
-                            line-height 16px
-                            font-size 13px
-                        .submit
-                            width 80px
-                            height 35px
-                            margin-top 10px
-                            border 1px solid #333
-                            line-height 35px
-                            letter-spacing .4em
-                            text-indent .4em
-                            transition background .2s ease, color .2s ease
-                            &:not([disabled="disabled"])
-                                &:hover
-                                    background #333
-                                    color #fff
-                            &[disabled="disabled"]
-                                border-color #aaa
-                                color #aaa
+                        line-height 15px
+                    &.error
                         .count
-                            position absolute
-                            right 5px
-                            bottom 25px
-                            font-size 11px
-                            line-height 15px
-                        &.error
-                            .count
-                                color #f00
+                            color #f00
+                .informations
+                    li
+                        margin 5px 0
+                        .input-group
+                            display flex
+                            height 30px
+                            margin 0 3px
+                            border 1px solid  #eee
+                            & > div
+                                &:not(:last-child)
+                                    border-right 1px solid  #eee
+                            .input
+                                flex 1
+                                input
+                                    display block
+                                    width 100%
+                                    height 30px
+                                    padding 0 8px
+                                    box-sizing border-box
+                                    line-height 30px
+                            .button
+                                width 25px
+                                height 30px
+                                text-align center
+                                line-height 30px
+                                button
+                                    display block
+                                    width 100%
+                                    height 30px
+                                    color #333
                 .preferences
                     margin 0 15px 0
                     h3
