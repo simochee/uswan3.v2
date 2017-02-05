@@ -187,7 +187,6 @@ timetable
 
     style(type="stylus").
         .coming-soon
-            content '３月末実装予定！'
             position absolute
             top 50%
             left 50%
@@ -196,7 +195,7 @@ timetable
             margin -72.5px -150px 0
             text-align center
             color rgba(#333, .8)
-            text-shadow 2px 2px 2px rgba(#000, .14), 2px 3px 1px rgba(#000, .2), 2px 1px 5px rgba(#000, .12)
+            text-shadow 2px 2px 2px rgba(#000, .07), 2px 3px 1px rgba(#000, .1), 2px 1px 5px rgba(#000, .06)
             z-index 1
             transform rotate(8deg)
             .large
