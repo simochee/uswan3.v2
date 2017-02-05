@@ -115,8 +115,11 @@ side-menu
                 position relative
                 width 100%
                 height 120px
-                background #ad1514
+                background url(./assets/images/header.png) center center
+                background-size cover
+                // background #ad1514
                 .brand
+                    display none
                     height 120px
                     color #fff
                     text-align center
@@ -136,12 +139,12 @@ side-menu
                         font-size 16px
                         line-height 30px
                     p
-                        font-size 12px
+                        font-size 11px
                         color #555
                         line-height 18px
                     .feedback-form
                         position relative
-                        margin 8px 10px
+                        margin 8px 3px
                         .textarea
                             display block
                             width 100%
