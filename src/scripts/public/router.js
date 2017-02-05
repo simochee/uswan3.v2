@@ -22,10 +22,15 @@ route('/timetable', () => {
     riot.mount('router', 'timetable');
 });
 
-route('/info', () => {
-    require('../tags/public/info');
-    riot.mount('router', 'info');
+route('/archive', () => {
+    require('../tags/public/archive');
+    riot.mount('router', 'archive');
 });
+
+// route('/info', () => {
+//     require('../tags/public/info');
+//     riot.mount('router', 'info');
+// });
 
 module.exports = {
     start: () => {
