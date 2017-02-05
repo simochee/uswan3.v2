@@ -2,14 +2,15 @@ archive
     .search-box
         .header 過去の献立を表示
         .main
-            form.input-area(onclick="return false")
-                input(type="month")
+            form.input-area(onsubmit="return false")
+                input.date-picker(type="month")
                 button.submit(type="submit") 表示
 
     .result
         
     script(type="es6").
         const store = require('../../public/store');
+        
 
 
     style(type="stylus").
@@ -35,16 +36,15 @@ archive
                     justify-content center
                     margin 0 20px 8px
                     .date-picker
+                        display block
                         width 150px
-                        height 30px
                         padding 0 12px
                         border 1px solid rgba(#ccc, .5)
-                        // background rgba(#fff, .3)
-                        background #f00
+                        background rgba(#fff, .3)
                         line-height 30px
                     .submit
+                        display block
                         width 60px
-                        height 32px
                         background rgba(#ccc, .5)
                         color rgba(#000, .8)
                         font-size 12px
