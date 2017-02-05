@@ -2,7 +2,7 @@ timetable
     .coming-soon
         .large ３月末実装予定！
         .small coming soon...
-    .timetable-wrapper
+    //- .timetable-wrapper
         .week-controller(class="active{idx}")
             .controller-item(onclick="{show(0)}") 月
             .controller-item(onclick="{show(1)}") 火
@@ -212,8 +212,6 @@ timetable
             bottom 55px
             right 0
             opacity .5
-            filter: blur(4px)
-            pointer-events: none
             .week-controller
                 $size = 60px
                 position absolute
