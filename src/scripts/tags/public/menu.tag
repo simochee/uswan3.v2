@@ -1,69 +1,36 @@
 menu
 
-    daily-menu
-
-    h2
-        span.ja ２月
-        span.en February
-
-    menu-item(data="{data[0]}")
-    menu-item(data="{data[1]}")
-    menu-item(data="{data[2]}")
+    virtual(each="{item, i in data}")
+        header(if="{i == 0}")
+            daily-menu(if="{isToday(item.date)}" data="{item}")
+            img(src="https://placehold.jp/320x50.png")
+            h2
+                span.ja ２月
+                span.en February
+        menu-item(if="{i != 0}" data="{item}")
 
     script(type="es6").
-        this.data = [
-            {
-                date: '2017-02-05',
-                breakfast: {
-                    wes: 'ロールパン',
-                    jap: null,
-                    side: ['ソーセージとキャベツのフレンチサラダ', 'キャベツサラダ', 'スープ', '牛乳']
-                },
-                lunch: {
-                    main: '叉焼炒飯',
-                    side: ['かぼちゃのコロッケ', '味噌汁']
-                },
-                dinner: {
-                    a: '和風ごまハンバーグ',
-                    b: 'ハンバーグデミグラスソースと海老フライ',
-                    side: ['小松菜とえのきの梅和え', 'ライス', '味噌汁']
-                }
-            },
-            {
-                date: '2017-02-06',
-                breakfast: {
-                    wes: 'ロールパン',
-                    jap: null,
-                    side: ['ソーセージとキャベツのフレンチサラダ', 'キャベツサラダ', 'スープ', '牛乳']
-                },
-                lunch: {
-                    main: '叉焼炒飯',
-                    side: ['かぼちゃのコロッケ', '味噌汁']
-                },
-                dinner: {
-                    a: '和風ごまハンバーグ',
-                    b: 'ハンバーグデミグラスソースと海老フライ',
-                    side: ['小松菜とえのきの梅和え', 'ライス', '味噌汁']
-                }
-            },
-            {
-                date: '2017-02-07',
-                breakfast: {
-                    wes: 'ロールパン',
-                    jap: null,
-                    side: ['ソーセージとキャベツのフレンチサラダ', 'キャベツサラダ', 'スープ', '牛乳']
-                },
-                lunch: {
-                    main: '叉焼炒飯',
-                    side: ['かぼちゃのコロッケ', '味噌汁']
-                },
-                dinner: {
-                    a: '和風ごまハンバーグ',
-                    b: 'ハンバーグデミグラスソースと海老フライ',
-                    side: ['小松菜とえのきの梅和え', 'ライス', '味噌汁']
-                }
+        const moment = require('moment');
+        const store = require('../../public/store');
+        const u = require('../../utils');
+        const obs = u.observable();
+
+        this.data = [];
+
+        const now = moment().format('HH:mm');
+        store.getMenu(now > '19:40' ? 1 : 0).then((data) => {
+            this.data = data;
+            this.update();
+            obs.trigger('menu:loaded');
+        });
+
+        this.isToday = (date) => {
+            return (e) => {
+                const isToday = moment().isSame(date, 'day');
+                console.log(isToday);
+                return isToday;
             }
-        ]
+        }
 
     style(type="stylus").
         h2

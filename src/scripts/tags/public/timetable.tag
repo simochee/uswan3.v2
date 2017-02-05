@@ -1,4 +1,7 @@
 timetable
+    .coming-soon
+        .large ３月末実装予定！
+        .small coming soon...
     .timetable-wrapper
         .week-controller(class="active{idx}")
             .controller-item(onclick="{show(0)}") 月
@@ -183,12 +186,34 @@ timetable
         }    
 
     style(type="stylus").
+        .coming-soon
+            content '３月末実装予定！'
+            position absolute
+            top 50%
+            left 50%
+            width 300px
+            height 100px
+            margin -72.5px -150px 0
+            text-align center
+            color rgba(#333, .8)
+            text-shadow 2px 2px 2px rgba(#000, .14), 2px 3px 1px rgba(#000, .2), 2px 1px 5px rgba(#000, .12)
+            z-index 1
+            transform rotate(8deg)
+            .large
+                line-height 70px
+                font-weight bold
+                font-size 30px
+            .small
+                line-height 30px
+                font-size 20px
         .timetable-wrapper
             position absolute
             top 0
             left 0
             bottom 55px
             right 0
+            filter: blur(4px)
+            pointer-events: none
             .week-controller
                 $size = 60px
                 position absolute

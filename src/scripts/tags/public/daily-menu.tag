@@ -1,59 +1,52 @@
 daily-menu
     .daily-menu#dailyMenu
-        .header 今日の献立
+        .header {tomorrow ? '明日' : '今日'}の献立
         .main
             .menu-item#dailyMenu-breakfast(class="{open: isOpen == 'breakfast', dailyMenuInit: init == 'breakfast'}" onclick="{open('breakfast')}")
                 .label 朝
                 .menu-body
                     .menu-main
                         .main-breakfast
-                            span.main-item(if="{today.breakfast.jap}") {today.breakfast.jap}
-                            span.main-item(if="{today.breakfast.wes}") {today.breakfast.wes}
+                            span.main-item(if="{data.breakfast.jap}") {data.breakfast.jap}
+                            span.main-item(if="{data.breakfast.wes}") {data.breakfast.wes}
                     .menu-side
                         ul
-                            li(each="{item in today.breakfast.side}") {item}
+                            li(each="{item in data.breakfast.side}") {item}
             .menu-item#dailyMenu-lunch(class="{open: isOpen == 'lunch', dailyMenuInit: init == 'lunch'}" onclick="{open('lunch')}")
                 .label 昼
                 .menu-body
-                    .menu-main {today.lunch.main}
+                    .menu-main {data.lunch.main}
                     .menu-side
                         ul
-                            li(each="{item in today.lunch.side}") {item}
+                            li(each="{item in data.lunch.side}") {item}
             .menu-item#dailyMenu-dinner(class="{open: isOpen == 'dinner', dailyMenuInit: init == 'dinner'}" onclick="{open('dinner')}")
                 .label 夜
                 .menu-body
                     .menu-main
                         .main-dinner
-                            span.main-a {today.dinner.a}
-                            span.main-b {today.dinner.b}
+                            span.main-a {data.dinner.a}
+                            span.main-b {data.dinner.b}
                     .menu-side
                         ul
-                            li(each="{item in today.dinner.side}") {item}
+                            li(each="{item in data.dinner.side}") {item}
 
     script(type="es6").
-        this.today = {
-            breakfast: {
-                wes: 'ロールパン',
-                jap: null,
-                side: ['ソーセージとキャベツのフレンチサラダ', 'キャベツサラダ', 'スープ', '牛乳']
-            },
-            lunch: {
-                main: '叉焼炒飯',
-                side: ['かぼちゃのコロッケ', '味噌汁']
-            },
-            dinner: {
-                a: '和風ごまハンバーグ',
-                b: 'ハンバーグデミグラスソースと海老フライ',
-                side: ['小松菜とえのきの梅和え', 'ライス', '味噌汁']
-            }
-        }
+        const moment = require('moment');
+        const u = require('../../utils');
+        const obs = u.observable();
 
-        this.init = 'breakfast';
+        this.data = opts.data;
+
+        const now = moment().format('HH:mm');
+        this.init = now <= '08:30' || now > '19:40' ? 'breakfast'
+                    : now <= '12:50' ? 'lunch' : 'dinner';
         this.isOpen = this.init;
+
+        this.tomorrow = now > '19:40';
 
         const padding = 30;
 
-        this.on('mount', () => {
+        obs.on('menu:loaded', () => {
             // 高さを付与
             const $parent = document.getElementsByClassName(`dailyMenuInit`)[0];
             const $elem = $parent.getElementsByClassName('menu-side');

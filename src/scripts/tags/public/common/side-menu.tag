@@ -42,7 +42,7 @@ side-menu
             this.count = 100 - len;
         }
 
-        this.isOpen = true;
+        this.isOpen = false;
 
         obs.on('side-menu:toggle', () => {
             console.log('TOGGLE!')
@@ -121,7 +121,7 @@ side-menu
                         .textarea
                             display block
                             width 100%
-                            height 150px
+                            height 90px
                             padding 10px 8px
                             border 1px solid #eee
                             box-sizing border-box
@@ -186,7 +186,7 @@ side-menu
                                     width 100%
                                     height 35px
         .close-wall
-            position absolute
+            position fixed
             top 0
             left 0
             bottom 0

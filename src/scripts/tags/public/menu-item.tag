@@ -22,6 +22,8 @@ menu-item
 
     script(type="es6").
         const moment = require('moment');
+        const u = require('../../utils');
+        const obs = u.observable();
     
         this.isOpen = false;
         this.toggle = () => {
@@ -39,7 +41,7 @@ menu-item
         this.date = m.get('date');
         this.weekday = m.format('ddd');
 
-        this.on('mount', () => {
+        obs.on('menu:loaded', () => {
             const $elem = document.getElementById(`menuItem${this.data.date}`);
             // 高さを保存
             const $summary = document.getElementsByClassName('summary')[0];
@@ -49,6 +51,7 @@ menu-item
             this.height = this.summaryH;
             this.update();
         });
+
 
     style(type="stylus").
         .menu-item
