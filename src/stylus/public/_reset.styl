@@ -11,6 +11,15 @@ html, body
 
 body
 	font-family Verdana, Roboto, "Droid Sans", "メイリオ", Meiryo, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "ＭＳ Ｐゴシック", sans-serif;
+	&::before
+		content ''
+		position fixed
+		top 0
+		left 0
+		bottom 0
+		right 0
+		background linear-gradient(to bottom, #fff7da 0%, #a4c3d3 70%) center top #a4c3d3 no-repeat
+		z-index -1
 
 button, input, textarea, select
 	background none
@@ -27,6 +36,3 @@ h1, h2, h3, h4, h5, h6
 .container
 	overflow hidden
 	padding-bottom 115px
-	background linear-gradient(to bottom, #fff7da 0%, #a4c3d3 70%) center top #a4c3d3 no-repeat
-	background-size 100% 500px
-	background-attachment fixed
