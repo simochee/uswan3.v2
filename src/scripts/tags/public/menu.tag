@@ -2,9 +2,9 @@ menu
 
     virtual(each="{item, i in data}")
         header(if="{i == 0}")
-            //- daily-menu(if="{isToday(item.date)}" data="{item}")
+            daily-menu(if="{isToday(item.date)}" data="{item}")
             .ad.ad-sm.ad-header
-                img(src="https://placehold.jp/320x50.png")
+                img(src="https://static1.squarespace.com/static/568fb86ba2bab85e9218aa37/t/56b0b83d59827ea2f14b3489/1454422087550/")
             h2
                 span.ja ２月
                 span.en February
