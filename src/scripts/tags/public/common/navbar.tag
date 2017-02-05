@@ -36,6 +36,8 @@ navbar
                 .closer.ion-android-close
 
     side-menu
+
+    curfew
             
     script(type="es6").
         const u = require('../../../utils');

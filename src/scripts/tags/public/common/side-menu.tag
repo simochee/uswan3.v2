@@ -3,73 +3,12 @@ side-menu
         header
             .brand デジタル版 白鳥寮献立表
         main
-            h3 インフォメーション
-            ul.informations
-                li
-                    .input-group
-                        .input
-                            input(type="text" value="7550097" readonly)
-                        .button
-                            button.btn(type="button" onclick="{togglePostalOption}")
-                                span.ion-android-arrow-dropdown
-                        .button
-                            button.btn(type="button")
-                                span.ion-ios-copy-outline
-                    .postal-option
-                        label
-                            input(type="checkbox")
-                            | 755
-                        label
-                            input(type="checkbox")
-                            | -
-                        label
-                            input(type="checkbox")
-                            | 0097
-                li
-                    .input-group
-                        .input
-                            input(type="text" value="山口県宇部市常盤台2丁目12番1号" readonly)
-                        .button
-                            button.btn(type="button" onclick="{toggleAddressOption}")
-                                span.ion-android-arrow-dropdown
-                        .button
-                            button.btn(type="button")
-                                span.ion-ios-copy-outline
-                    .address-option
-                        label
-                            input(type="checkbox")
-                            | 山口県
-                        label
-                            input(type="checkbox")
-                            | 宇部市
-                        label
-                            input(type="checkbox")
-                            | 常盤台
-                        label 
-                            input(type="checkbox")
-                            | 2丁目
-                        label
-                            input(type="checkbox")
-                            | 12番1号
             h3 フィードバック
             form.feedback-form(class="{error: this.count < 0}" onsubmit="{sendFeedback}")
                 textarea.textarea(placeholder="{limit ? 'ご意見ありがとうございました！' : '内容は公開されます。個人情報の記載はご遠慮下さい'}" disabled="{limit}" onkeyup="{letterCount}" onfocus="{hideNavbar}" onblur="{showNavbar}")
                 button.submit(type="submit" disabled="{limit: limit, error: this.count < 0}") 送信
                 .count {this.count}
-                //- h3 設定
-                //- dl
-                //-     dt 最初に表示するページ
-                //-     dd
-                //-         .select-full
-                //-             .label {firstValue || '今月の献立'}
-                //-             select.input(onchange="{updateFirstView}")
-                //-                 option(value="#/menu") 今日からの献立
-                //-                 option(value="") 時間割
-                //-                 option(value="") おしらせ
-                //-     dt デフォルトのクラス
-                //-         .select
-                //-             .label
-
+                
     .close-wall(class="{open: isOpen}" onclick="{close}")
 
     script(type="es6").
@@ -107,12 +46,7 @@ side-menu
             });
         }
 
-        this.updateFirstView = (e) => {
-            e.preventDefault();
-            this.firstValue = e.target.selectedOptions[0].text;
-        }
-
-        this.isOpen = true;
+        this.isOpen = false;
 
         obs.on('side-menu:toggle', () => {
             console.log('TOGGLE!')
