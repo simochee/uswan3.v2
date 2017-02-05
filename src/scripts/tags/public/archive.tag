@@ -7,7 +7,7 @@ archive
                 button.submit(type="submit") 表示
 
     .result
-        p 
+        input(type="month")
         
     script(type="es6").
         const store = require('../../public/store');
