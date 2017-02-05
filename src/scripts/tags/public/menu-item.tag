@@ -104,10 +104,35 @@ menu-item
                             font-size 10px
                 .menu
                     margin 0 40px 0 80px
-                    padding 15px 0
+                    padding 20px 0
                     .menu-main
+                        text-align center
                         & > span
-                            font-size 16px
+                            font-size 15px
+                        &:nth-child(2)
+                            margin 20px 0
+                        &.dinner
+                            .main-a,
+                            .main-b
+                                display block
+                                &::before
+                                    display inline-block
+                                    width 14px
+                                    height 14px
+                                    margin-right 5px
+                                    border 1px solid #333
+                                    color #333
+                                    font-size 10px
+                                    text-align center
+                                    line-height 14px
+                                    transform translateY(-1px)
+                            .main-a
+                                margin-bottom 5px
+                                &::before
+                                    content 'A'
+                            .main-b
+                                &::before
+                                    content 'B'
             .detail
                 position absolute
                 top 0
@@ -123,6 +148,8 @@ menu-item
                         font-size 16px
                     .week
                         font-size 10px
+                .menu
+                    padding 20px
             &.open
                 background rgba(#fff, .5)
                 .summary

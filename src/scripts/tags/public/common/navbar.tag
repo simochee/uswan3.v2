@@ -23,7 +23,7 @@ navbar
                     .icon.ion-ios-home-outline
                     .label 白鳥寮
             li.nav-item
-                a.nav-anchor(href="//twitter.com/uswan2_" target="_blank" onclick="{close}")
+                a.nav-anchor(href="twitter://user?screen_name=uswan2_" onclick="{close}")
                     .icon.ion-social-twitter-outline
                     .label Twitter
         .nav-large

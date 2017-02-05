@@ -6,6 +6,9 @@ search
                 input.input(type="text" placeholder="検索ワード" onfocus="{hideNavbar}" onblur="{showNavbar}")
                 button.submit(type="submit") 検索
             p.help-block 直近１ヶ月の献立から検索します
+
+    .ad.ad-sm.ad-header
+        img(src="https://placehold.jp/320x50.png")
     
     .result-no-keyword(show="{results == null}") 検索ワードを指定してください
     .result-empty(show="{results != null && results.length == 0}") ヒットする献立がありません
@@ -38,7 +41,7 @@ search
     
     style(type="stylus").
         .search-box
-            margin 10px 5%
+            margin 10px
             background rgba(#fff, 0.35)
             box-shadow 0 2px 2px 0 rgba(#000, .14), 0 3px 1px -2px rgba(#000, .2), 0 1px 5px 0 rgba(#000, .12)
             .header

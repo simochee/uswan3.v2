@@ -4,6 +4,21 @@ side-menu
             .brand デジタル版 白鳥寮献立表
         main
             .feedback
+                h3 インフォメーション
+                p 白鳥寮のインフォメーションです
+                ul.informations
+                    li
+                        .input-group
+                            .input
+                                input(type="text" value="山口県宇部市常盤台2丁目12番1号")
+                            .button
+                                button.btn(type="button" onclick="{toggleAddressOption}")
+                                    span.ion-android-arrow-dropdown
+                            .button
+                                button.btn(type="button")
+                                    span.ion-ios-copy-outline
+                        .address-option
+                            
                 h3 フィードバック
                 p ご指摘・ご意見などお気軽にお送りください！
                 form.feedback-form(class="{error: this.count < 0}" onsubmit="{sendFeedback}")
@@ -132,9 +147,10 @@ side-menu
                     color rgba(#fff, 0.4)
                     font-size 10px
             main
-                padding 15px 10px
+                padding 0 10px 15px
                 .feedback
                     h3
+                        margin-top 15px
                         color #333
                         font-size 16px
                         line-height 30px
