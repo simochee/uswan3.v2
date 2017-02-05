@@ -3,11 +3,15 @@ menu
     virtual(each="{item, i in data}")
         header(if="{i == 0}")
             daily-menu(if="{isToday(item.date)}" data="{item}")
-            img(src="https://placehold.jp/320x50.png")
+            .ad.ad-sm.ad-header
+                img(src="https://placehold.jp/320x50.png")
             h2
                 span.ja ２月
                 span.en February
         menu-item(if="{i != 0}" data="{item}")
+        .ad.ad-md.ad-menulist(if="{i % 7 == 6}")
+            img(src="https://placehold.jp/320x100.png")
+
 
     script(type="es6").
         const moment = require('moment');

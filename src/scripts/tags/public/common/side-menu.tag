@@ -6,9 +6,9 @@ side-menu
             .feedback
                 h3 フィードバック
                 p ご指摘・ご意見などお気軽にお送りください！
-                form.feedback-form(class="{error: this.count < 0}" onsubmit="return false")
-                    textarea.textarea(placeholder="内容は公開されます。個人情報の記載はご遠慮下さい。" onkeyup="{letterCount}" onfocus="{hideNavbar}" onblur="{showNavbar}")
-                    button.submit(type="submit" disabled="{error: this.count < 0}") 送信
+                form.feedback-form(class="{error: this.count < 0}" onsubmit="{sendFeedback}")
+                    textarea.textarea(placeholder="{limit ? 'ご意見ありがとうございました！' : '内容は公開されます。個人情報の記載はご遠慮下さい'}" disabled="{limit}" onkeyup="{letterCount}" onfocus="{hideNavbar}" onblur="{showNavbar}")
+                    button.submit(type="submit" disabled="{limit: limit, error: this.count < 0}") 送信
                     .count {this.count}
                 //- h3 設定
                 //- dl
@@ -27,19 +27,43 @@ side-menu
     .close-wall(class="{open: isOpen}" onclick="{close}")
 
     script(type="es6").
+        const Cookie = require('js-cookie');
+        const api = require('../../../public/api');
         const u = require('../../../utils');
 
         const obs = u.observable();
-
-        this.updateFirstView = (e) => {
-            e.preventDefault();
-            this.firstValue = e.target.selectedOptions[0].text;
-        }
 
         this.count = 100;
         this.letterCount = (e) => {
             const len = e.target.value.length;
             this.count = 100 - len;
+        }
+
+        this.limit = new Date - (new Date(Cookie.get('feedback_limit')) || 0) > 20 * 60 * 1000 ? false : true;
+
+        this.sendFeedback = (e) => {
+            e.preventDefault();
+            const input = e.target[0].value;
+            const plain = input.replace(/\n|\n\r|\r/g, '\n');
+            api.feedback(plain).then(() => {
+                const d = new Date;
+                Cookie.set('feedback_limit', new Date);
+                e.target[0].value = '';
+                this.count = '';
+                this.limit = true;
+                this.update();
+            }).catch((msg) => {
+                if(msg === null) {
+
+                } else {
+
+                }
+            });
+        }
+
+        this.updateFirstView = (e) => {
+            e.preventDefault();
+            this.firstValue = e.target.selectedOptions[0].text;
         }
 
         this.isOpen = false;

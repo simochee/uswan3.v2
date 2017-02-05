@@ -19,6 +19,22 @@ menu-item
             .date
                 .day {date}
                 .week {weekday}
+            .menu
+                .menu-main.breakfast
+                    span.main-item(if="{data.breakfast.jap}") {data.breakfast.jap}
+                    span.main-item(if="{data.breakfast.wes}") {data.breakfast.wes}
+                .menu-side
+                    span.side-item(each="{item in data.breakfast.side}") {item}
+                .menu-main.lunch
+                    span.main-item {data.lunch.main}
+                .menu-side
+                    span.side-item(each="{item in data.lunch.side}") {item}
+                .menu-main.dinner
+                    span.main-a {data.dinner.a}
+                    span.main-b {data.dinner.b}
+                .menu-side
+                    span.side-item(each="{item in data.dinner.side}") {item}
+
 
     script(type="es6").
         const moment = require('moment');
@@ -44,9 +60,9 @@ menu-item
         obs.on('menu:loaded', () => {
             const $elem = document.getElementById(`menuItem${this.data.date}`);
             // 高さを保存
-            const $summary = document.getElementsByClassName('summary')[0];
+            const $summary = $elem.getElementsByClassName('summary')[0];
             this.summaryH = $summary.clientHeight;
-            const $detail = document.getElementsByClassName('detail')[0];
+            const $detail = $elem.getElementsByClassName('detail')[0];
             this.detailH = $detail.clientHeight;
             this.height = this.summaryH;
             this.update();
@@ -62,20 +78,22 @@ menu-item
             background rgba(#fff, .1)
             transition background .5s ease, height .4s .2s ease
             .summary
-                display flex
                 transition transform .4s .2s ease
                 .date
-                    position relative
-                    width 80px
+                    position absolute
+                    top 0
+                    left 0
+                    bottom 0
+                    width 60px
                     margin 8px 0
                     border-right 1px solid rgba(#aaa, .3)
                     .wrapper
                         position absolute
                         top 50%
                         left 50%
-                        width 80px
+                        width 60px
                         height 40px
-                        margin -20px -40px
+                        margin -20px -30px
                         color rgba(#000, .75)
                         text-align center
                         .day   
@@ -84,8 +102,12 @@ menu-item
                         .week
                             line-height 12px
                             font-size 10px
+                .menu
+                    margin 0 40px 0 80px
+                    padding 15px 0
                     .menu-main
-                        flex 1
+                        & > span
+                            font-size 16px
             .detail
                 position absolute
                 top 0

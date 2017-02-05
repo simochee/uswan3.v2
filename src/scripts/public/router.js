@@ -13,6 +13,7 @@ route('/menu', () => {
 
 route('/search', () => {
     require('../tags/public/search');
+    require('../tags/public/menu-item');
     riot.mount('router', 'search');
 });
 
