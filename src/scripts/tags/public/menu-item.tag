@@ -1,7 +1,7 @@
 menu-item
 
-    .menu-item(id="menuItem{data.date}" class="{open: isOpen}" onclick="{toggle}" style="height: {height}px")
-        .summary
+    .menu-item(id="menuItem{data.date}" class="{open: isOpen}" style="height: {height}px")
+        .summary(onclick="{open}")
             .date
                 .wrapper
                     .day {date}
@@ -19,6 +19,10 @@ menu-item
             .date
                 .day {date}
                 .week {weekday}
+            .tweet
+                span.ion-social-twitter-outline
+            .back(onclick="{close}")
+                span.ion-ios-arrow-right
             .menu
                 .menu-main.breakfast
                     span.main-item(if="{data.breakfast.jap}") {data.breakfast.jap}
@@ -30,8 +34,8 @@ menu-item
                 .menu-side
                     span.side-item(each="{item in data.lunch.side}") {item}
                 .menu-main.dinner
-                    span.main-a {data.dinner.a}
-                    span.main-b {data.dinner.b}
+                    span.main-item.main-a {data.dinner.a}
+                    span.main-item.main-b {data.dinner.b}
                 .menu-side
                     span.side-item(each="{item in data.dinner.side}") {item}
 
@@ -49,6 +53,14 @@ menu-item
             } else {
                 this.height = this.summaryH;
             }
+        }
+        this.open = () => {
+            this.isOpen = true;
+            this.height = this.detailH;
+        }
+        this.close = () => {
+            this.isOpen = false;
+            this.height = this.summaryH;
         }
 
         this.data = opts.data;
@@ -148,8 +160,71 @@ menu-item
                         font-size 16px
                     .week
                         font-size 10px
+                .tweet
+                    position absolute
+                    top 0
+                    left 0
+                    width 60px
+                    height 50px
+                    font-size 25px
+                    text-align center
+                    line-height 50px
+                    opacity .8
+                .back
+                    position absolute
+                    top 0
+                    right 0
+                    width 60px
+                    height 50px
+                    font-size 25px
+                    text-align center
+                    line-height 50px
                 .menu
-                    padding 20px
+                    padding 20px 0
+                    .menu-main
+                        margin-bottom 8px
+                        text-align center
+                        &:not(:first-child)
+                            margin-top 30px
+                        .main-item
+                            font-size 18px
+                            line-height 30px
+                        &.breakfast
+                            .main-item:nth-child(2)
+                                &::before
+                                    content '/'
+                                    margin 0 5px
+                        &.dinner
+                            .main-a,
+                            .main-b
+                                display block
+                                &::before
+                                    display inline-block
+                                    width 18px
+                                    height 18px
+                                    margin-right 8px
+                                    border 1px solid  #333
+                                    opacity .8
+                                    color #333
+                                    text-align center
+                                    line-height 18px
+                                    font-size 12px
+                                    transform translateY(-2px)
+                            .main-a
+                                &::before
+                                    content 'A'
+                            .main-b
+                                &::before
+                                    content 'B'
+                    .menu-side
+                        margin 0 20px
+                        text-align center
+                        .side-item
+                            display inline-block
+                            margin 0 10px
+                            line-height 25px
+                            font-size 15px
+                            color rgba(#111, .9)
             &.open
                 background rgba(#fff, .5)
                 .summary

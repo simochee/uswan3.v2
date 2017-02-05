@@ -2,7 +2,7 @@ menu
 
     virtual(each="{item, i in data}")
         header(if="{i == 0}")
-            daily-menu(if="{isToday(item.date)}" data="{item}")
+            //- daily-menu(if="{isToday(item.date)}" data="{item}")
             .ad.ad-sm.ad-header
                 img(src="https://placehold.jp/320x50.png")
             h2
