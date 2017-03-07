@@ -10,6 +10,13 @@ route('/menu', () => {
     riot.mount('router', 'menu');
 });
 
+route('/menu/editor/*/*', (year, month) => {
+    require('../tags/private/menu_editor');
+    riot.mount('router', 'menu-editor', {
+        year, month
+    });
+});
+
 route('/twitter', () => {
     require('../tags/private/twitter');
     riot.mount('router', 'twitter');

@@ -88,6 +88,8 @@ menu-item
             background rgba(#fff, .1)
             transition background .5s ease, height .4s .2s ease
             .summary
+                user-select none
+                cursor pointer
                 transition transform .4s .2s ease
                 .date
                     position absolute
@@ -155,6 +157,7 @@ menu-item
                     padding 10px 0
                     border-bottom 1px solid rgba(#aaa, .3)
                     text-align center
+                    user-select none
                     .day
                         font-size 16px
                     .week
@@ -166,6 +169,7 @@ menu-item
                         bottom 0
                         width 60px
                         font-size 25px
+                        cursor pointer
                 .menu
                     padding 20px 0
                     .menu-main

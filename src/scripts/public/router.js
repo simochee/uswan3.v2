@@ -8,6 +8,7 @@ route('/menu', () => {
     require('../tags/public/menu');
     require('../tags/public/daily-menu');
     require('../tags/public/menu-item');
+    require('../tags/public/ads/ad-header-bottom');
     riot.mount('router', 'menu');
 });
 

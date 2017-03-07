@@ -1,12 +1,36 @@
 curfew
 
-    .curfew-dialog(class="{wraped: isOpen, hide: !isShow}")
+    .curfew-dialog(class="{wraped: isOpen, hide: !isShow}" onclick="{clicked}")
         .curfew-container
             p 門限を確認しましたか？
 
     script(type="es6").
+        const Cookie = require('js-cookie');
+
         const u = require('../../../utils');
         const obs = u.observable();
+
+        let clicked = false;
+        this.clicked = (e) => {
+            e.preventDefault();
+
+            if(!clicked) {
+                clicked = true;
+
+                setTimeout(() => {
+                    if(clicked) {
+                        Cookie.set('curfew_hide', true);
+                    }
+                    clicked = false;
+                }, 300);
+            } else {
+                // ダブルクリック
+                setTimeout(() => {
+                    
+                }, 280);
+                clicked = false;
+            }
+        }
     
         this.isOpen = false;
         
@@ -19,7 +43,7 @@ curfew
             this.update();
         });
 
-        this.isShow = true;
+        this.isShow = !Cookie.get('curfew_hide') || false;
         obs.on('navbar:show', () => {
             this.isShow = true;
             this.update();

@@ -80,6 +80,7 @@ navbar
             padding 0 60px 0 110px
             box-sizing border-box
             z-index 100
+            user-select none
             &.hide
                 display none
             .navbar-nav
@@ -101,6 +102,7 @@ navbar
                         padding 5px 0
                         text-decoration none
                         color #222
+                        -webkit-tap-highlight-color: rgba(0,0,0,0); 
                         .icon
                             line-height 30px
                             font-size 25px
@@ -126,6 +128,7 @@ navbar
                     border-radius 100%
                     border 2px solid  #222
                     color #222
+                    -webkit-tap-highlight-color: rgba(0,0,0,0); 
                     .icon
                         font-size 40px
                         text-align center
@@ -151,6 +154,7 @@ navbar
                     position relative
                     display block
                     color #222
+                    -webkit-tap-highlight-color: rgba(0,0,0,0); 
                     & > div
                         position absolute
                         width 60px
