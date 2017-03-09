@@ -72,6 +72,7 @@ navbar
 
     style(type="stylus").
         .navbar
+            $black = #333
             position fixed
             bottom 0
             left 0
@@ -101,7 +102,7 @@ navbar
                         display block
                         padding 5px 0
                         text-decoration none
-                        color #222
+                        color $black
                         -webkit-tap-highlight-color: rgba(0,0,0,0); 
                         .icon
                             line-height 30px
@@ -126,8 +127,8 @@ navbar
                     height ($size - 14)
                     margin 5px
                     border-radius 100%
-                    border 2px solid  #222
-                    color #222
+                    border 2px solid  $black
+                    color $black
                     -webkit-tap-highlight-color: rgba(0,0,0,0); 
                     .icon
                         font-size 40px
@@ -153,7 +154,7 @@ navbar
                 .nav-anchor
                     position relative
                     display block
-                    color #222
+                    color $black
                     -webkit-tap-highlight-color: rgba(0,0,0,0); 
                     & > div
                         position absolute
