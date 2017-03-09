@@ -152,7 +152,8 @@ timetable
                 display flex
                 width 100%
                 height $size
-                cursor pointer
+                color rgba(#000, .6)
+                transition color .5s ease
                 &::before
                     content ''
                     position absolute
@@ -165,18 +166,28 @@ timetable
                     z-index -1
                     transition left .5s ease
                 &.active0
+                    .controller-item:nth-child(1)
+                        color rgba(#000, .9)
                     &::before
                         left 0
                 &.active1
+                    .controller-item:nth-child(2)
+                        color rgba(#000, .9)
                     &::before
                         left 20%
                 &.active2
+                    .controller-item:nth-child(3)
+                        color rgba(#000, .9)
                     &::before
                         left 40%
                 &.active3
+                    .controller-item:nth-child(4)
+                        color rgba(#000, .9)
                     &::before
                         left 60%
                 &.active4
+                    .controller-item:nth-child(5)
+                        color rgba(#000, .9)
                     &::before
                         left 80%
                 .controller-item
