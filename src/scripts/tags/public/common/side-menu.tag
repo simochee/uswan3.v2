@@ -24,7 +24,8 @@ side-menu
             this.count = 100 - len;
         }
 
-        this.limit = new Date - (new Date(Cookie.get('feedback_limit')) || 0) > 20 * 60 * 1000 ? false : true;
+        //- this.limit = new Date - (new Date(Cookie.get('feedback_limit')) || 0) > 20 * 60 * 1000 ? false : true;
+        this.limit = false;
 
         this.sendFeedback = (e) => {
             e.preventDefault();

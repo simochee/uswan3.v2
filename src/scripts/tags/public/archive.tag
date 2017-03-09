@@ -9,7 +9,7 @@ archive
     .result
         
     script(type="es6").
-        const store = require('../../public/store');
+        const model = require('../../public/model');
         
 
 
