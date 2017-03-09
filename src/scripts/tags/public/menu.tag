@@ -13,11 +13,11 @@ menu
             img(src="http://bentographics.com/site/wp-content/uploads/2014/12/4_ADS_320%C3%97100.png" width="320")
 
     div(if="{data.length < 1}")
-        .ad.ad-lg.ad-menulist
-            img(src="https://placehold.jp/320x250.png")
         .menu-not-found
             span.icon.ion-help
             p.msg 献立が見つかりませんでした
+        .ad.ad-lg.ad-menulist
+            img(src="https://placehold.jp/320x250.png")
 
     script(type="es6").
         this.ad = 'http://example.com/api.js';
@@ -66,7 +66,7 @@ menu
                     transform translateY(0)
                     opacity 1
             width 300px
-            margin 40px auto 0
+            margin 20px auto
             padding 15px 0
             background rgba(#fff, .18)
             border 2px solid  #333
